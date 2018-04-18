@@ -1,4 +1,7 @@
-
+'''
+Creates csv file that has a unique game on each row. Result can be seen in data.csv. 
+-1 in columns days_since_sale, average_days_per_sale, average_days_per_sale_variance means theres been no sales for that game
+'''
 import csv
 import json
 import datetime
@@ -6,7 +9,7 @@ import time
 
 now = datetime.datetime.now()
 
-with open("dataComplete.json") as fo:
+with open("dataAction1.json") as fo:
     data = json.load(fo)
 
 f = csv.writer(open("data.csv", "w+", encoding="utf-8"))
@@ -35,6 +38,8 @@ for dataSet in data.values():
     
     try:
         previousStartDate = None
+        startDate = None
+        endDate = None
         for saleHistory in dataSet["sale_history"]:
             
             #the last sale for number of days since sale
@@ -72,7 +77,9 @@ for dataSet in data.values():
       
     #mean of days between sales
     averageDaysPerSale = averageDaysPerSale / max(1, len(daysPerSale))
-    
+    if (averageDaysPerSale == 0):
+        averageDaysPerSale = -1
+        
     #variance of days between sales
     daysPerSaleVariance = -1
     for timePerSale in daysPerSale:

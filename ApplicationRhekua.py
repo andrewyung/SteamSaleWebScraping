@@ -1,4 +1,10 @@
+'''
+Uses list of games on steamspy (by genre) and steamsales.rhekua.com to find history of sales on each game.
+Creates json file containing data from each game in genre. AppendReleaseDate.py should be used on resulting json file if creating time series.
 
+Sample can be seen at dataAction.json which include the use of AppendReleaseDate.py. 
+If AppendReleaseDate.py is not run on the file then the Sale_History key wouldnt be added.
+'''
 import urllib.request
 import json
 import re

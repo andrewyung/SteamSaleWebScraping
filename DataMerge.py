@@ -1,5 +1,6 @@
-
-#combine data files and remove duplicates
+'''
+Combine 2 json files (duplicates are only added once). Merge used if data from multiple genres needed
+'''
 import json
 
 with open("dataAction1.json") as fo:

@@ -1,7 +1,6 @@
 '''
-Created on Feb 24, 2018
+Appends release date to json file that contains games. Should be used if creating time series. 
 http://store.steampowered.com/api/appdetails?appids=
-@author: Andy
 '''
 import json
 import urllib.request
@@ -20,10 +19,6 @@ for key in data2.keys():
         data2[key]["release_date"] = resultJson[key]["data"]["release_date"]["date"]
     except (KeyError):
         keysToDel.append(key)
-    time.sleep (2);
-        
-#for keyDel in keysToDel:
-#    del data2[keyDel]
-    
+    time.sleep (2);#steam has limit on number of requests within period of time
 with open("dataSports1.json", "w") as fo:
     json.dump(data2, fo)
